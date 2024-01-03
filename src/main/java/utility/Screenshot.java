@@ -13,7 +13,7 @@ public class Screenshot
 	public static void getScreenshot(WebDriver driver,String name) throws IOException
 	{
 		File source=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		File destination=new File("C:\\AriseSoftwareAcademy\\Naptool\\Screenshot"+name+".png");
+		File destination=new File("C:\\AriseSoftwareAcademy\\Naptol\\Screenshot"+name+".png");
 		FileHandler.copy(source, destination);
 	}
 
