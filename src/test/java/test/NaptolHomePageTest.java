@@ -50,7 +50,7 @@ public class NaptolHomePageTest extends BaseTest
 	@Test
 	public void verifyIfUserIsAbleToSearchTheProduct()
 	{
-		test=extentReports.createTest("createverifyIfUserIsAbleToSearchTheProduct");
+		test=extentReports.createTest("createVerifyIfUserIsAbleToSearchTheProduct");
 		NaptolHomePage  naptolHomePage=new NaptolHomePage(driver);
 		naptolHomePage.enterProductName("Cooker");
 		naptolHomePage.clickOnSearchButton();

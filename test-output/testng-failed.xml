@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.NaptolHomePageTest">
+      <class name="test.AddToCartPage">
         <methods>
-          <include name="configureReports"/>
-          <include name="verifyIfUserIsAbleToSearchTheProduct"/>
           <include name="openChrome"/>
+          <include name="verifyIfUserIsAbleToAddProductUsingQuickViewOption"/>
+          <include name="configureReport"/>
         </methods>
-      </class> <!-- test.NaptolHomePageTest -->
+      </class> <!-- test.AddToCartPage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
