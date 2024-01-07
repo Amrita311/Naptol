@@ -2,20 +2,28 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-07T11:45:11 IST" name="Default suite" finished-at="2024-01-07T11:45:17 IST" duration-ms="5583">
+  <suite started-at="2024-01-07T12:15:15 IST" name="Default suite" finished-at="2024-01-07T12:15:21 IST" duration-ms="6328">
     <groups>
     </groups>
-    <test started-at="2024-01-07T11:45:11 IST" name="Default test" finished-at="2024-01-07T11:45:17 IST" duration-ms="5583">
-      <class name="test.AddToCartFromProdutDescriptionTest">
-        <test-method is-config="true" signature="openChrome()[pri:0, instance:test.AddToCartFromProdutDescriptionTest@4d5650ae]" started-at="2024-01-07T11:45:11 IST" name="openChrome" finished-at="2024-01-07T11:45:15 IST" duration-ms="3465" status="PASS">
+    <test started-at="2024-01-07T12:15:15 IST" name="Default test" finished-at="2024-01-07T12:15:21 IST" duration-ms="6328">
+      <class name="test.RemoveProductTest">
+        <test-method is-config="true" signature="configureReport()[pri:0, instance:test.RemoveProductTest@6d4d66d2]" started-at="2024-01-07T12:15:15 IST" name="configureReport" finished-at="2024-01-07T12:15:15 IST" duration-ms="273" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configureReport -->
+        <test-method is-config="true" signature="openChrome()[pri:0, instance:test.RemoveProductTest@6d4d66d2]" started-at="2024-01-07T12:15:15 IST" name="openChrome" finished-at="2024-01-07T12:15:19 IST" duration-ms="3695" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openChrome -->
-        <test-method signature="verifyIfUserIsAbleToAddProductToCartUsingDescription()[pri:0, instance:test.AddToCartFromProdutDescriptionTest@4d5650ae]" started-at="2024-01-07T11:45:15 IST" name="verifyIfUserIsAbleToAddProductToCartUsingDescription" finished-at="2024-01-07T11:45:17 IST" duration-ms="1815" status="PASS">
+        <test-method signature="verifyIfUserIsAbleToRemoveProductFromCart()[pri:0, instance:test.RemoveProductTest@6d4d66d2]" started-at="2024-01-07T12:15:19 IST" name="verifyIfUserIsAbleToRemoveProductFromCart" finished-at="2024-01-07T12:15:21 IST" duration-ms="1932" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIfUserIsAbleToAddProductToCartUsingDescription -->
-      </class> <!-- test.AddToCartFromProdutDescriptionTest -->
+        </test-method> <!-- verifyIfUserIsAbleToRemoveProductFromCart -->
+        <test-method is-config="true" signature="publishReport()[pri:0, instance:test.RemoveProductTest@6d4d66d2]" started-at="2024-01-07T12:15:21 IST" name="publishReport" finished-at="2024-01-07T12:15:21 IST" duration-ms="234" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- publishReport -->
+      </class> <!-- test.RemoveProductTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

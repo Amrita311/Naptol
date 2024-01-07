@@ -6,7 +6,7 @@ import java.util.Set;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage {
-	public void switchToPage(WebDriver driver, String ExpectedTitle)
+	public void switchToNewPage(WebDriver driver, String ExpectedTitle)
 	{
 		Set<String> addressOfPage=driver.getWindowHandles();
 		Iterator<String> i=addressOfPage.iterator();
