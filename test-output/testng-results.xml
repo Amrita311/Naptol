@@ -2,24 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-04T17:03:35 IST" name="Default suite" finished-at="2024-01-04T17:03:44 IST" duration-ms="8836">
+  <suite started-at="2024-01-07T11:45:11 IST" name="Default suite" finished-at="2024-01-07T11:45:17 IST" duration-ms="5583">
     <groups>
     </groups>
-    <test started-at="2024-01-04T17:03:35 IST" name="Default test" finished-at="2024-01-04T17:03:44 IST" duration-ms="8836">
-      <class name="test.AddToCartPage">
-        <test-method is-config="true" signature="configureReport()[pri:0, instance:test.AddToCartPage@f78a47e]" started-at="2024-01-04T17:03:35 IST" name="configureReport" finished-at="2024-01-04T17:03:35 IST" duration-ms="252" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- configureReport -->
-        <test-method is-config="true" signature="openChrome()[pri:0, instance:test.AddToCartPage@f78a47e]" started-at="2024-01-04T17:03:35 IST" name="openChrome" finished-at="2024-01-04T17:03:42 IST" duration-ms="6766" status="PASS">
+    <test started-at="2024-01-07T11:45:11 IST" name="Default test" finished-at="2024-01-07T11:45:17 IST" duration-ms="5583">
+      <class name="test.AddToCartFromProdutDescriptionTest">
+        <test-method is-config="true" signature="openChrome()[pri:0, instance:test.AddToCartFromProdutDescriptionTest@4d5650ae]" started-at="2024-01-07T11:45:11 IST" name="openChrome" finished-at="2024-01-07T11:45:15 IST" duration-ms="3465" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openChrome -->
-        <test-method signature="verifyIfUserIsAbleToAddProductUsingQuickViewOption()[pri:0, instance:test.AddToCartPage@f78a47e]" started-at="2024-01-04T17:03:42 IST" name="verifyIfUserIsAbleToAddProductUsingQuickViewOption" finished-at="2024-01-04T17:03:44 IST" duration-ms="1782" status="PASS">
+        <test-method signature="verifyIfUserIsAbleToAddProductToCartUsingDescription()[pri:0, instance:test.AddToCartFromProdutDescriptionTest@4d5650ae]" started-at="2024-01-07T11:45:15 IST" name="verifyIfUserIsAbleToAddProductToCartUsingDescription" finished-at="2024-01-07T11:45:17 IST" duration-ms="1815" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIfUserIsAbleToAddProductUsingQuickViewOption -->
-      </class> <!-- test.AddToCartPage -->
+        </test-method> <!-- verifyIfUserIsAbleToAddProductToCartUsingDescription -->
+      </class> <!-- test.AddToCartFromProdutDescriptionTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

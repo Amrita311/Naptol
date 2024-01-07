@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.AddToCartPage">
+      <class name="test.AddToCartFromProdutDescriptionTest">
         <methods>
+          <include name="verifyIfUserIsAbleToAddProductToCartUsingDescription"/>
           <include name="openChrome"/>
-          <include name="verifyIfUserIsAbleToAddProductUsingQuickViewOption"/>
-          <include name="configureReport"/>
         </methods>
-      </class> <!-- test.AddToCartPage -->
+      </class> <!-- test.AddToCartFromProdutDescriptionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

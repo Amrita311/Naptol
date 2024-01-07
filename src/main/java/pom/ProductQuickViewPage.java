@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductQuickViewPage 
 {
+	@FindBy (xpath="") private WebElement productName;
 	@FindBy (xpath="//span[@class='offer-price']") private WebElement price;
 	@FindBy (xpath="//span[text()='Click here to Buy']") private WebElement clickHereToBuy;
 	@FindBy (xpath="//span[@class='ship-price']") private WebElement shippingCharges;
@@ -16,9 +17,13 @@ public class ProductQuickViewPage
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void getProductPrice()
+	public String getProductName() {
+		return productName.getText();
+	}
+	
+	public String getProductPrice()
 	{
-		price.getText();
+		return price.getText();
 	}
 	
 	public void clickOnClickHereToBuy()
@@ -26,10 +31,13 @@ public class ProductQuickViewPage
 		clickHereToBuy.click();
 	}
 	
-	public void getShippingCharges()
+	public String getShippingCharges()
 	{
-		shippingCharges.getText();
+		String charge=shippingCharges.getText();
+		String charges[]=charge.split(" ");
+		return charges[1];
 	}
+	
 }
 
 

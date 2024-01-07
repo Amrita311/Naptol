@@ -57,6 +57,11 @@ public class NaptolHomePage
 		search.sendKeys(productName);
 	}
 	
+	public void clearSearchTab()
+	{
+		search.clear();
+	}
+	
 	public String headingOfCategory()
 	{
 		return headingOfCategory.getText();

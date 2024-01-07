@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductResultPage 
+public class ProductResultPage extends BasePage
 {
 	@FindBy (xpath="//div[@class='grid_Square ']") private List<WebElement> products;
 	@FindBy (xpath="//a[@href='#QuickView']") private List<WebElement> quickView;
@@ -29,4 +29,9 @@ public class ProductResultPage
 		actions.moveToElement(products.get(product)).perform();
 		quickView.get(product).click();
 	}
+	
+	public void clickOnProductDescription(int product) {
+		products.get(product).click();
+	}
+
 }
