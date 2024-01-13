@@ -27,9 +27,9 @@ public class AddToCartFromProdutDescriptionTest extends BaseTest {
 	}
 
 	@BeforeMethod
-	public void openChrome()
+	public void launchBrowser(String browser)
 	{
-		driver=Browser.openBrowser();
+		driver=Browser.openBrowser(browser);
 	}
 	
 	@Test

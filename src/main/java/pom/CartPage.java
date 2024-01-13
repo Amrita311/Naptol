@@ -15,6 +15,10 @@ public class CartPage {
 	@FindBy (xpath="(//a[@class='red_button2'])[1]") private WebElement proceedToCheckout;
 	@FindBy (xpath="(//a[@onclick=\"cart.continueShopping()\"])[1]") private WebElement continueShopping;
 	@FindBy (xpath= "//a[text()='Remove']")private List<WebElement> removeProduct;
+	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_item']//div//h2") private List<WebElement> productDescription;
+	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_UPrice']") private List<WebElement> productPrice;
+	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_ship']") private List<WebElement> productShippingCharges;
+	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_Amount']") private List<WebElement> orderAmount;
 	
 	public CartPage(WebDriver driver)
 	{
@@ -40,6 +44,33 @@ public class CartPage {
 		wait.until(ExpectedConditions.visibilityOf(proceedToCheckout));
 		removeProduct.get(index).click();
 	}
+	
+	public String getproductDescription(int index)
+	{
+		return productDescription.get(index).getText();
+	}
+	
+	public String getproductPrice(int index)
+	{
+		return productPrice.get(index).getText();
+		/*String price=productPrice.get(index).getText();
+		String productPrice1[]=price.split(" ");
+		return productPrice1[1];*/
+	}
+	
+	public String getproductShippingCharge(int index)
+	{
+		return productShippingCharges.get(index).getText();
+		/*String charge=productShippingCharges.get(index).getText();
+		String charges[]=charge.split(" ");
+		return charges[1];*/
+	}
+	
+	public String getOrderAmount(int index)
+	{
+		return orderAmount.get(index).getText();
+	}
+	
 
 	
 }

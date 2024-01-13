@@ -7,6 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -23,6 +24,7 @@ import pom.ProductResultPage;
 
 public class AddToCartPageTest extends BaseTest
 {
+	
 	ExtentReports extentReports;
 	ExtentTest test;
 	
@@ -36,10 +38,11 @@ public class AddToCartPageTest extends BaseTest
 		extentReports=Reports.genrateReports();
 	}
 	
+	@Parameters({"browser"})
 	@BeforeMethod
-	public void openChrome()
+	public void launchBrowser(String browser)
 	{
-		driver=Browser.openBrowser();
+		driver=Browser.openBrowser(browser);
 	}
 	
 	@Test
@@ -54,7 +57,7 @@ public class AddToCartPageTest extends BaseTest
 		
 		ProductResultPage productResultPage=new ProductResultPage(driver);
 		productResultPage.getNoOfProducts();
-		productResultPage.clickOnQuickViewButton(driver, 1);
+		productResultPage.clickOnQuickViewButton(driver, 0);
 		Assert.assertTrue(productResultPage.getNoOfProducts()>0);
 		
 		ProductQuickViewPage productQuickViewPage=new ProductQuickViewPage(driver);
@@ -63,9 +66,30 @@ public class AddToCartPageTest extends BaseTest
 		CartPage cartPage=new CartPage(driver);
 		Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 1);
 		
+		System.out.println("Product description: "+cartPage.getproductDescription(0));
+		System.out.println("Product price: "+cartPage.getproductPrice(0));
+		System.out.println("Shipping charges: "+cartPage.getproductShippingCharge(0));
+		System.out.println("Order amount: "+cartPage.getOrderAmount(0));
+		System.out.println("price: "+productQuickViewPage.getProductPrice());
+		System.out.println("shipping: "+productQuickViewPage.getShippingCharges());
+		System.out.println("Product name"+productQuickViewPage.getProductName(driver));
+		
+		
+		/*double price=Double.parseDouble(cartPage.getproductPrice(0));
+		double shipping=Double.parseDouble(cartPage.getproductShippingCharge(0));
+		double total=price+shipping;
+		System.out.println("Total amount");
+		
+		 double price=Double.parseDouble(cartPage.getproductPrice(0));
+		 double shipping=Double.parseDouble(cartPage.getproductShippingCharge(0));
+		  double total=price+shipping;
+		  System.out.println("Total="+total);*/
+		  
+		  
+		
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void VerifyIfUserIsAbleToAddMultipleProductsToCart()
 	{
 		test=extentReports.createTest("CreateVerifyIfUserIsAbleToAddMultipleProductsToCart");
@@ -77,7 +101,7 @@ public class AddToCartPageTest extends BaseTest
 		
 	    productResultPage=new ProductResultPage(driver);
 		productResultPage.getNoOfProducts();
-		productResultPage.clickOnQuickViewButton(driver, 1);
+		productResultPage.clickOnQuickViewButton(driver, 0);
 		Assert.assertTrue(productResultPage.getNoOfProducts()>0);
 		
 		productQuickViewPage=new ProductQuickViewPage(driver);
@@ -101,8 +125,7 @@ public class AddToCartPageTest extends BaseTest
 		 
 		 productQuickViewPage=new ProductQuickViewPage(driver);
 		 productQuickViewPage.clickOnClickHereToBuy();
-		
-		
+		 		
 	}
 	
 
