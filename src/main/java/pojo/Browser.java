@@ -23,7 +23,7 @@ public class Browser
 			driver=new EdgeDriver();
 		}
 	
-	    
+		
 		driver.get("https://www.naaptol.com/");
 		driver.manage().window().maximize();
 		return driver;

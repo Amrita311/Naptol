@@ -28,9 +28,9 @@ public class NaptolHomePageTest extends BaseTest
 		extentReports=Reports.genrateReports();
 	}
 	@BeforeMethod
-	public void openChrome()
+	public void launchBrowser(String browser)
 	{
-		driver=Browser.openBrowser();
+		driver=Browser.openBrowser(browser);
 	}
 	
 	@Test
