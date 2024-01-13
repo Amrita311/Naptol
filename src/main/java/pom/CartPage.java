@@ -45,30 +45,29 @@ public class CartPage {
 		removeProduct.get(index).click();
 	}
 	
-	public String getproductDescription(int index)
+	public String getproductDescription(WebDriver driver,int index)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5000));
+		wait.until(ExpectedConditions.visibilityOf(proceedToCheckout));
 		return productDescription.get(index).getText();
 	}
 	
-	public String getproductPrice(int index)
+	public double getproductPrice(WebDriver driver,int index)
 	{
-		return productPrice.get(index).getText();
-		/*String price=productPrice.get(index).getText();
-		String productPrice1[]=price.split(" ");
-		return productPrice1[1];*/
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5000));
+		wait.until(ExpectedConditions.visibilityOf(proceedToCheckout));
+		return Double.parseDouble(productPrice.get(index).getText().substring(3));
+		
 	}
 	
-	public String getproductShippingCharge(int index)
+	public double getproductShippingCharge(int index)
 	{
-		return productShippingCharges.get(index).getText();
-		/*String charge=productShippingCharges.get(index).getText();
-		String charges[]=charge.split(" ");
-		return charges[1];*/
+		return Double.parseDouble(productShippingCharges.get(index).getText().substring(3));
 	}
 	
-	public String getOrderAmount(int index)
+	public double getOrderAmount(int index)
 	{
-		return orderAmount.get(index).getText();
+		return Double.parseDouble(orderAmount.get(index).getText());
 	}
 	
 

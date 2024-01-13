@@ -40,7 +40,7 @@ public class ProductValidationTest extends BaseTest {
 	@Test
 	public void verifyIfProductsDetailsOnShoppingCartAreSimilarToProductAddedFromQuickViewTab()
 	{
-		test=extentReports.createTest("createVerifyIfProductsDetailsOnShoppingCartAreSimilarToProductAddedFromQuickViewTab");
+		test=extentReports.createTest("CreateverifyIfProductsDetailsOnShoppingCartAreSimilarToProductAddedFromQuickViewTab");
 		NaptolHomePage naptolHomePage=new NaptolHomePage(driver);
 		naptolHomePage.enterProductName("Mobiles");
 		naptolHomePage.clickOnSearchButton();
@@ -53,20 +53,22 @@ public class ProductValidationTest extends BaseTest {
 		Assert.assertTrue(productResultPage.getNoOfProducts()>0);
 		
 		ProductQuickViewPage productQuickViewPage=new ProductQuickViewPage(driver);
+
+		System.out.println("price: "+productQuickViewPage.getProductPrice());
+		System.out.println("shipping: "+productQuickViewPage.getShippingCharges());
+		System.out.println("Product name from Quick:"+productQuickViewPage.getProductName(driver));
+		
+		String expectedProductName=productQuickViewPage.getProductName(driver);
+		double priceFromQuickView=productQuickViewPage.getProductPrice();
+		double shippingChargesFromQuickView=productQuickViewPage.getShippingCharges();
 		productQuickViewPage.clickOnClickHereToBuy();
 		
 		CartPage cartPage=new CartPage(driver);
 		Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 1);
 		
-		System.out.println("Product description: "+cartPage.getproductDescription(0));
-		System.out.println("Product price: "+cartPage.getproductPrice(0));
-		System.out.println("Shipping charges: "+cartPage.getproductShippingCharge(0));
-		System.out.println("Product name: "+productQuickViewPage.getProductName(driver));
-		
-		/*if(productQuickViewPage.getProductName().equals(cartPage.getproductDescription(0)))
-		{
-			System.out.println("Product added successfully...");
-		}*/
+		Assert.assertEquals(cartPage.getproductDescription(driver,0), expectedProductName);
+		Assert.assertEquals(cartPage.getproductPrice(driver,0),priceFromQuickView );
+		Assert.assertEquals(cartPage.getproductShippingCharge(0), shippingChargesFromQuickView);
 		
 	}
 	@AfterTest

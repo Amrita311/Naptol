@@ -5,7 +5,7 @@
 
 	<parameter name="browser" value="Chrome"></parameter>
     <classes>
-      <class name="test.AddToCartPageTest"/>
+      <class name="test.CartAmountTest"/>
       
      
       
