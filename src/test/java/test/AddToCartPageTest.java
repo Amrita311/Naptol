@@ -61,6 +61,10 @@ public class AddToCartPageTest extends BaseTest
 		Assert.assertTrue(productResultPage.getNoOfProducts()>0);
 		
 		ProductQuickViewPage productQuickViewPage=new ProductQuickViewPage(driver);
+		System.out.println("price: "+productQuickViewPage.getProductPrice());
+		System.out.println("shipping: "+productQuickViewPage.getShippingCharges());
+		System.out.println("Product name"+productQuickViewPage.getProductName(driver));
+		
 		productQuickViewPage.clickOnClickHereToBuy();
 		
 		CartPage cartPage=new CartPage(driver);
@@ -70,9 +74,6 @@ public class AddToCartPageTest extends BaseTest
 		System.out.println("Product price: "+cartPage.getproductPrice(0));
 		System.out.println("Shipping charges: "+cartPage.getproductShippingCharge(0));
 		System.out.println("Order amount: "+cartPage.getOrderAmount(0));
-		System.out.println("price: "+productQuickViewPage.getProductPrice());
-		System.out.println("shipping: "+productQuickViewPage.getShippingCharges());
-		System.out.println("Product name"+productQuickViewPage.getProductName(driver));
 		
 		
 		/*double price=Double.parseDouble(cartPage.getproductPrice(0));
