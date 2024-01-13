@@ -4,14 +4,14 @@
   <test thread-count="5" name="ChromeTest(failed)">
     <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="test.AddToCartPageTest">
+      <class name="test.CartAmountTest">
         <methods>
-          <include name="publishReport"/>
+          <include name="AddTwoProductsIntoCartAndVerifyIfSumOfUnitPriceAndShippingPriceIsEqualToOrderAmountAndAlsoVerifyIfSumOfOrderAmountIsEqualToCartAmount"/>
           <include name="configureReport"/>
+          <include name="publishReports"/>
           <include name="launchBrowser"/>
-          <include name="verifyIfUserIsAbleToAddProductUsingQuickViewOption"/>
         </methods>
-      </class> <!-- test.AddToCartPageTest -->
+      </class> <!-- test.CartAmountTest -->
     </classes>
   </test> <!-- ChromeTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

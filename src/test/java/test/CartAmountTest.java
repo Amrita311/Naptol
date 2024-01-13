@@ -1,18 +1,14 @@
 package test;
 
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 
 import pojo.Browser;
 import pom.CartPage;
@@ -20,17 +16,14 @@ import pom.NaptolHomePage;
 import pom.ProductQuickViewPage;
 import pom.ProductResultPage;
 
-@Listeners(test.Listener.class)
-
-public class AddToCartPageTest extends BaseTest
-{
-	
+public class CartAmountTest extends BaseTest{
 	ExtentReports extentReports;
 	ExtentTest test;
 	
 	NaptolHomePage naptolHomePage;
 	ProductResultPage productResultPage;
 	ProductQuickViewPage productQuickViewPage;
+	CartPage cartPage;
 	
 	@BeforeTest
 	public void configureReport()
@@ -45,8 +38,8 @@ public class AddToCartPageTest extends BaseTest
 		driver=Browser.openBrowser(browser);
 	}
 	
-	@Test
-	public void verifyIfUserIsAbleToAddProductUsingQuickViewOption()
+	@Test(enabled=false)
+	public void addSingleProductToCartAndVerifIfSumOfUnitPriceShippingPriceIsEqualToOrderAmount()
 	{
 		test=extentReports.createTest("createVerifyIfProdutsAreDisplayedOnValidSearch");
 		naptolHomePage=new NaptolHomePage(driver);
@@ -63,14 +56,22 @@ public class AddToCartPageTest extends BaseTest
 		ProductQuickViewPage productQuickViewPage=new ProductQuickViewPage(driver);
 		productQuickViewPage.clickOnClickHereToBuy();
 		
-		CartPage cartPage=new CartPage(driver);
+	    cartPage=new CartPage(driver);
 		Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 1);
+		
+		double unitPrice=cartPage.getproductPrice(driver,0);
+		double shippingCharges=cartPage.getproductShippingCharge(0);
+		double totalAmount=unitPrice+shippingCharges;
+		System.out.println("Total amount: "+totalAmount);
+		System.out.println("Total Order amount: "+cartPage.getOrderAmount(0));
+		
+		Assert.assertEquals(cartPage.getOrderAmount(0),totalAmount);
 	}
 	
-	@Test
-	public void VerifyIfUserIsAbleToAddMultipleProductsToCart()
+	@Test(enabled=true)
+	public void AddTwoProductsIntoCartAndVerifyIfSumOfUnitPriceAndShippingPriceIsEqualToOrderAmountAndAlsoVerifyIfSumOfOrderAmountIsEqualToCartAmount()
 	{
-		test=extentReports.createTest("CreateVerifyIfUserIsAbleToAddMultipleProductsToCart");
+		test=extentReports.createTest("CreateAddTwoProductsIntoCartAndVerifyIfSumOfUnitPriceAndShippingPriceIsEqualToOrderAmountAndAlsoVerifyIfSumOfOrderAmountIsEqualToCartAmount");
 		NaptolHomePage naptolHomePage=new NaptolHomePage(driver);
 		naptolHomePage.enterProductName("Mobiles");
 		naptolHomePage.clickOnSearchButton();
@@ -85,7 +86,7 @@ public class AddToCartPageTest extends BaseTest
 		productQuickViewPage=new ProductQuickViewPage(driver);
 		productQuickViewPage.clickOnClickHereToBuy();
 		
-		CartPage cartPage=new CartPage(driver);
+		cartPage=new CartPage(driver);
 		Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 1);
 		
 		cartPage.clickOnContinueShopping();
@@ -103,14 +104,16 @@ public class AddToCartPageTest extends BaseTest
 		 
 		 productQuickViewPage=new ProductQuickViewPage(driver);
 		 productQuickViewPage.clickOnClickHereToBuy();
-		 		
+		 
+		 double unitPrice=cartPage.getproductPrice(driver,0);
+		 double shippingPrice=cartPage.getproductShippingCharge(0);
+		 double totalAmountOfFirstProduct=unitPrice+shippingPrice;
+		 System.out.println("Total Amount: "+totalAmountOfFirstProduct);
 	}
 	
-
 	@AfterTest
-	public void publishReport()
+	public void publishReports()
 	{
 		extentReports.flush();
 	}
-
 }
