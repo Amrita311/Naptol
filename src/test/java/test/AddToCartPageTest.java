@@ -60,6 +60,8 @@ public class AddToCartPageTest extends BaseTest
 		productResultPage.clickOnQuickViewButton(driver, 0);
 		Assert.assertTrue(productResultPage.getNoOfProducts()>0);
 		
+		System.out.println("Welcome");
+		
 		ProductQuickViewPage productQuickViewPage=new ProductQuickViewPage(driver);
 		System.out.println("price: "+productQuickViewPage.getProductPrice());
 		System.out.println("shipping: "+productQuickViewPage.getShippingCharges());
