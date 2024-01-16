@@ -88,7 +88,7 @@ public class AddToCartPageTest extends BaseTest
 		CartPage cartPage=new CartPage(driver);
 		Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 1);
 		
-		cartPage.clickOnContinueShopping();
+		cartPage.clickOnContinueShopping(driver);
 		
 		naptolHomePage=new NaptolHomePage(driver);
 		naptolHomePage.clearSearchTab();

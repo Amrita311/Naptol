@@ -63,9 +63,11 @@ public class CartAmountTest extends BaseTest{
 		double shippingCharges=cartPage.getproductShippingCharge(0);
 		double totalAmount=unitPrice+shippingCharges;
 		System.out.println("Total amount: "+totalAmount);
-		System.out.println("Total Order amount: "+cartPage.getOrderAmount(0));
+		System.out.println("Total Order amount: "+cartPage.getOrderAmount(driver,0));
 		
-		Assert.assertEquals(cartPage.getOrderAmount(0),totalAmount);
+		System.out.println("Cart amount: "+cartPage.getCartAmount(driver));
+		
+		Assert.assertEquals(cartPage.getOrderAmount(driver,0),totalAmount);
 	}
 	
 	@Test(enabled=true)
@@ -87,28 +89,54 @@ public class CartAmountTest extends BaseTest{
 		productQuickViewPage.clickOnClickHereToBuy();
 		
 		cartPage=new CartPage(driver);
-		Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 1);
 		
-		cartPage.clickOnContinueShopping();
+		
+		cartPage.clickOnContinueShopping(driver);
 		
 		naptolHomePage=new NaptolHomePage(driver);
 		naptolHomePage.clearSearchTab();
-		naptolHomePage.enterProductName("Cooker");
+		naptolHomePage.enterProductName("Bedsheet");
 		naptolHomePage.clickOnSearchButton();
 		String title=driver.getTitle();
-		Assert.assertTrue(title.contains("Cooker"));
+		Assert.assertTrue(title.contains("Bedsheet"));
 		
 		 productResultPage=new ProductResultPage(driver);
 		 productResultPage.getNoOfProducts();
-		 productResultPage.clickOnQuickViewButton(driver, 1);
+		 productResultPage.clickOnQuickViewButton(driver,5);
 		 
 		 productQuickViewPage=new ProductQuickViewPage(driver);
+		 productQuickViewPage.selectColor(0);
 		 productQuickViewPage.clickOnClickHereToBuy();
 		 
+		 cartPage=new CartPage(driver);
+
+		 Assert.assertEquals(cartPage.getNoOfProductsInCart(driver), 2);
+		 		 
+		 /*System.out.println("Product name: "+cartPage.getproductDescription(driver,0));
+		 System.out.println("Product name2: "+cartPage.getproductDescription(driver,1));
+		 //System.out.println(cartPage.getCartAmount(driver));
+		 System.out.println("Price: "+cartPage.getproductPrice(driver,0));
+		 System.out.println("Shippoing: "+cartPage.getproductShippingCharge(0));
+		 
+		 System.out.println("First Product: "+cartPage.getOrderAmount(driver,0));
+		System.out.println("Second Product: "+cartPage.getOrderAmount(driver,1));*/
+		
 		 double unitPrice=cartPage.getproductPrice(driver,0);
 		 double shippingPrice=cartPage.getproductShippingCharge(0);
 		 double totalAmountOfFirstProduct=unitPrice+shippingPrice;
-		 System.out.println("Total Amount: "+totalAmountOfFirstProduct);
+		 System.out.println("Total Amount1: "+totalAmountOfFirstProduct);
+		 
+		 double unitPrice1=cartPage.getproductPrice(driver,1);
+		  double shippingPrice1=cartPage.getproductShippingCharge(1);
+		  double totalAmountOfSecondProduct=unitPrice1+shippingPrice1;
+		  System.out.println("Total Amount2: "+totalAmountOfSecondProduct);
+		  
+		  Assert.assertEquals(cartPage.getOrderAmount(driver, 0), totalAmountOfFirstProduct);
+		  Assert.assertEquals(cartPage.getOrderAmount(driver, 1), totalAmountOfSecondProduct);
+		  
+		  double expectedCartAmount=totalAmountOfFirstProduct+totalAmountOfSecondProduct;
+		  
+		  Assert.assertEquals(cartPage.getCartAmount(driver), expectedCartAmount);
 	}
 	
 	@AfterTest

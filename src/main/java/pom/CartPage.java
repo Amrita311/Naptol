@@ -19,6 +19,8 @@ public class CartPage {
 	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_UPrice']") private List<WebElement> productPrice;
 	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_ship']") private List<WebElement> productShippingCharges;
 	@FindBy (xpath="//div[@id='cartItems']//li[@class='head_Amount']") private List<WebElement> orderAmount;
+	//@FindBy (xpath="//ul[@id='cartData']//li[5]") private List<WebElement> orderAmount;
+	@FindBy (xpath="(//ul[@id='cartTotal']//label)[1]") private WebElement cartAmount;
 	
 	public CartPage(WebDriver driver)
 	{
@@ -33,8 +35,10 @@ public class CartPage {
 	
 	
 	
-	public void clickOnContinueShopping()
+	public void clickOnContinueShopping(WebDriver driver)
 	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000));
+		wait.until(ExpectedConditions.visibilityOf(proceedToCheckout));
 		continueShopping.click();
 	}
 	
@@ -65,11 +69,19 @@ public class CartPage {
 		return Double.parseDouble(productShippingCharges.get(index).getText().substring(3));
 	}
 	
-	public double getOrderAmount(int index)
+	public double getOrderAmount(WebDriver driver,int index)
 	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000));
+		wait.until(ExpectedConditions.visibilityOf(proceedToCheckout));
 		return Double.parseDouble(orderAmount.get(index).getText());
 	}
 	
-
+	public double getCartAmount(WebDriver driver)
+	{
+		String amount=cartAmount.getText().substring(3).replace(",", "");
+		return Double.parseDouble(amount);
+	}
+	
+	
 	
 }

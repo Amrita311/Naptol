@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.ProductValidationTest">
+      <class name="test.CartAmountTest">
         <methods>
-          <include name="launchBrowser"/>
+          <include name="AddTwoProductsIntoCartAndVerifyIfSumOfUnitPriceAndShippingPriceIsEqualToOrderAmountAndAlsoVerifyIfSumOfOrderAmountIsEqualToCartAmount"/>
+          <include name="configureReport"/>
           <include name="publishReports"/>
-          <include name="verifyIfProductsDetailsOnShoppingCartAreSimilarToProductAddedFromQuickViewTab"/>
-          <include name="configureReports"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- test.ProductValidationTest -->
+      </class> <!-- test.CartAmountTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

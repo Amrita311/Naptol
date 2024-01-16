@@ -1,6 +1,7 @@
 package pom;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class ProductQuickViewPage
 	@FindBy (xpath="//span[text()='Click here to Buy']") private WebElement clickHereToBuy;
 	@FindBy (xpath="//span[@class='ship-price']") private WebElement shippingCharges;
 	@FindBy (xpath="(//a[text()='Branded'])[2]") private WebElement branded;
+	@FindBy (xpath="//ul[@class=\"sizeBox clearfix\"]//li") List<WebElement> color;
 	
 	public ProductQuickViewPage(WebDriver driver)
 	{
@@ -43,6 +45,11 @@ public class ProductQuickViewPage
 		String charge=shippingCharges.getText();
 		String charges[]=charge.split(" ");
 		return Double.parseDouble(charges[1]);
+	}
+	
+	public void selectColor(int index)
+	{
+	   color.get(index).click();
 	}
 	
 	
